@@ -19,9 +19,6 @@ app.get('/', (req, res) =>{
   res.json({message: "Oi express!" })
 } )
 
-// const DB_USER = 'neto'
-// const DB_PASSWORD= encodeURIComponent('cNVQIwgQkvSsYyze')
-
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@apicluster.qf9pkh3.mongodb.net/?retryWrites=true&w=majority`
@@ -31,8 +28,3 @@ mongoose
     app.listen(3000)
   })
   .catch((err)=>console.log(err))
-
-
-//cNVQIwgQkvSsYyze
-
-//mongodb+srv://neto:cNVQIwgQkvSsYyze@apicluster.qf9pkh3.mongodb.net/bancodaapi?retryWrites=true&w=majority
