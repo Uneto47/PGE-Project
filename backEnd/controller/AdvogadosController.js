@@ -1,9 +1,19 @@
 const Advogados = require('../models/advogado');
+const bcrypt = require("bcrypt");
+
+function encrypt(passowrd) {
+  try {
+    const saltRound = 10
+    return bcrypt.hashSync(passowrd, saltRound)
+  } catch (err) {
+    console.log(err)
+  }}
 
 // Create
 const create = async (req, res) => {
   try {
-    const advogado = new Advogados(req.body);
+    const advogados = {...req.body , senha: encrypt(req.body.senha)}
+    const advogado = new Advogados(advogados);
     await advogado.save();
     res.status(201).json(advogado);
   } catch (error) {
