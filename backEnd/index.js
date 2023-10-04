@@ -3,44 +3,21 @@ const mongoose = require('mongoose')
 const app = express()
 require('dotenv').config()
 
-const ClienteAdvogado = require('./models/clientesAdvogados');
-const Person = require('./models/Person');
-const ProcessoJudicial = require('./models/processoJudicial');
-const Documento = require('./models/documentos');
+const processoJudicialRoutes = require('./routes/ProcessoJudicialRoutes');
+const documentosRoutes = require('./routes/DocumentosRoutes');
+const clientesAdvogadosRoutes = require('./routes/ClientesAdvogadosRoutes');
+
 
 app.use(
+  express.json(),
   express.urlencoded({
     extended: true,
   }),
 )
 
-app.use(express.json())
-
-app.post('/Person', async (req, res)=>{
-  const { name, salary, approved} = req.body
-
-  if (!name) {
-    res.status(422).json({error: 'O nome é obrigatório'})
-  }
-
-  const person = {
-    name,
-    salary,
-    approved
-  }
-  try {
-
-    await Person.create(person)
-    res.status(201).json({message: 'Person inserida com sucesso!'}) 
-
-  } catch(error) {
-    res.status(500).json({error: error})
-  }
-})
-
-app.get('/', (req, res) =>{
-  res.json({message: "Oi express!" })
-} )
+app.use('/processos-judiciais', processoJudicialRoutes);
+app.use('/documentos', documentosRoutes);
+app.use('/clientes-advogados', clientesAdvogadosRoutes);
 
 mongoose
   .connect(
