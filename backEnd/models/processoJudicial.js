@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const processoJudicialSchema = new mongoose.Schema({
-  NumeroProcesso: { type: String, required: true },
-  Parte: { type: mongoose.Schema.Types.ObjectId, ref: 'ClienteAdvogado' },
-  Responsavel: { type: mongoose.Schema.Types.ObjectId, ref: 'ClienteAdvogado' },
-  Documentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Documento'}],
-  Tema: String,
-  ValorCausa: Number,
+  numeroprocesso: { type: String, required: true, unique: true },
+  parte: { type: mongoose.Schema.Types.ObjectId, ref: 'ClienteAdvogado' },
+  responsavel: { type: mongoose.Schema.Types.ObjectId, ref: 'ClienteAdvogado' },
+  documentos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Documento'}],
+  tema: String,
+  valorcausa: Number,
 });
 
 const ProcessoJudicial = mongoose.model('ProcessoJudicial', processoJudicialSchema);
