@@ -5,7 +5,8 @@ require('dotenv').config()
 
 const processoJudicialRoutes = require('./routes/ProcessoJudicialRoutes');
 const documentosRoutes = require('./routes/DocumentosRoutes');
-const clientesAdvogadosRoutes = require('./routes/ClientesAdvogadosRoutes');
+const advogadosRoutes = require('./routes/AdvogadosRoutes');
+const clientesRoutes = require('./routes/ClientesRoutes');
 
 
 app.use(
@@ -17,7 +18,8 @@ app.use(
 
 app.use('/processos-judiciais', processoJudicialRoutes);
 app.use('/documentos', documentosRoutes);
-app.use('/clientes-advogados', clientesAdvogadosRoutes);
+app.use('/clientes', clientesRoutes);
+app.use('/advogados', advogadosRoutes);
 
 mongoose
   .connect(
