@@ -7,7 +7,9 @@ const create = async (req, res) => {
     await documento.save();
     res.status(201).json(documento);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao criar documento' });
+    const msg = error.message;
+    console.error(msg)
+    res.status(500).json({ msg });
   }
 };
 
@@ -17,6 +19,8 @@ const get = async (req, res) => {
     const documentos = await Documento.find();
     res.status(200).json(documentos);
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao listar documentos' });
   }
 };
@@ -30,6 +34,8 @@ const getById = async (req, res) => {
     }
     res.status(200).json(documento);
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao obter documento' });
   }
 };
@@ -43,6 +49,8 @@ const update = async (req, res) => {
     }
     res.status(200).json(documento);
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao atualizar documento' });
   }
 };
@@ -56,6 +64,8 @@ const remove = async (req, res) => {
     }
     res.status(204).end();
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao excluir documento' });
   }
 };

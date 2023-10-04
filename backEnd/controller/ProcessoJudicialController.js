@@ -1,28 +1,32 @@
 const ProcessoJudicial = require('../models/processoJudicial');
 
 // Create
-exports.createProcessoJudicial = async (req, res) => {
+const create = async (req, res) => {
   try {
     const processoJudicial = new ProcessoJudicial(req.body);
     await processoJudicial.save();
     res.status(201).json(processoJudicial);
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao criar processo judicial' });
   }
 };
 
 // Read (List)
-exports.listProcessosJudiciais = async (req, res) => {
+const get = async (req, res) => {
   try {
     const processosJudiciais = await ProcessoJudicial.find().populate('Parte Responsavel Documentos');
     res.status(200).json(processosJudiciais);
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao listar processos judiciais' });
   }
 };
 
 // Read (Detail)
-exports.getProcessoJudicial = async (req, res) => {
+const getByNumero = async (req, res) => {
   try {
     const numeroProcesso = req.params.numeroProcesso;
 
@@ -34,13 +38,15 @@ exports.getProcessoJudicial = async (req, res) => {
 
     res.status(200).json(processoJudicial);
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao buscar processo judicial por número de processo' });
   }
 };
 
 // Update
 // Atualizar um processo judicial pelo número de processo
-exports.updateProcessoJudicial = async (req, res) => {
+const update = async (req, res) => {
   try {
     const numeroProcesso = req.params.numeroProcesso;
 
@@ -52,6 +58,8 @@ exports.updateProcessoJudicial = async (req, res) => {
 
     res.status(200).json(processoJudicial);
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao atualizar processo judicial por número de processo' });
   }
 };
@@ -59,7 +67,7 @@ exports.updateProcessoJudicial = async (req, res) => {
 
 // Delete
 // Excluir um processo judicial pelo número de processo
-exports.deleteProcessoJudicial = async (req, res) => {
+const remove = async (req, res) => {
   try {
     const numeroProcesso = req.params.numeroProcesso;
 
@@ -71,7 +79,10 @@ exports.deleteProcessoJudicial = async (req, res) => {
 
     res.status(204).end();
   } catch (error) {
+    const msg = error.message;
+    console.error(msg)
     res.status(500).json({ error: 'Erro ao excluir processo judicial por número de processo' });
   }
 };
 
+module.exports = { get, getByNumero, remove, update, create}
