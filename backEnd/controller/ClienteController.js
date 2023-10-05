@@ -11,6 +11,23 @@ function encrypt(passowrd) {
 
 // Create
 const create = async (req, res) => {
+  const {nome, cpf, senha } = req.body
+  if(!nome){
+    return res.status(422).json({ msg: 'O nome é obrigatório!' })
+  }
+  if(!cpf){
+    return res.status(422).json({ msg: 'O cpf é obrigatório!' })
+  }
+  if(!senha){
+    return res.status(422).json({ msg: 'A senha é obrigatória!' })
+  }
+
+  const user = await Clientes.findOne({cpf: cpf})
+
+  if (user) {
+     return res.status(422).json({msg: 'CPF já cadastrado'})
+  }
+
   try {
     const clientes = {...req.body , senha: encrypt(req.body.senha)}
     const cliente = new Clientes(clientes);
