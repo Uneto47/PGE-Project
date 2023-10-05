@@ -16,7 +16,7 @@ const create = async (req, res) => {
 // Read (List)
 const get = async (req, res) => {
   try {
-    const processosJudiciais = await ProcessoJudicial.find().populate('Parte Responsavel Documentos');
+    const processosJudiciais = await ProcessoJudicial.find().populate({ path: "documentos" });
     res.status(200).json(processosJudiciais);
   } catch (error) {
     const msg = error.message;
