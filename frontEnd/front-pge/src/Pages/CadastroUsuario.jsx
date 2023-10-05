@@ -1,10 +1,47 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function CadastroUsuario() {
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
   const [isAdvogado, setIsAdvogado] = useState(false);
+  const [oab, setoab] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    const endpoint = isAdvogado ? "advogados" : "clientes" 
+
+    const userData = {
+      nome,
+      cpf,
+      oab,
+      senha
+    };
+
+    if (isAdvogado) {
+      userData.oab = oab;
+    }
+
+    console.log(endpoint)
+
+    try {
+      const response = await axios.post(`http://localhost:3000/${endpoint}/`, userData);
+
+      console.log('Cadastro realizado com sucesso!', response.data);
+
+      setNome('');
+      setCpf('');
+      setSenha('');
+      setoab('');
+    } catch (error) {
+      console.error('Erro ao cadastrar o usuário', error);
+    }
+  };
 
   return (
-    <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
 
       <div className="mt-2">
         <label>
@@ -18,22 +55,23 @@ function CadastroUsuario() {
         </label>
       </div>
 
-      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Faça o Cadastro da sua conta
         </h2>
       </div>
 
-      <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" action="#" method="POST">
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        <form className="space-y-6" onSubmit={handleFormSubmit}>
           <div>
-            <label for="Nome" class="block text-sm font-medium leading-6 text-gray-900">Nome</label>
-            <div class="mt-2">
+            <label htmlFor="Nome" className="block text-sm font-medium leading-6 text-gray-900">Nome</label>
+            <div className="mt-2">
               <input id="Nome"
                 name="Nome"
-                autocomplete="Nome"
                 type="text"
-                required class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
+                value = {nome}
+                onChange={(e) => setNome(e.target.value)}
+                required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
                 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
                 focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -41,13 +79,14 @@ function CadastroUsuario() {
           </div>
 
           <div>
-            <label for="Cpf" class="block text-sm font-medium leading-6 text-gray-900">CPF</label>
-            <div class="mt-2">
+            <label htmlFor="Cpf" className="block text-sm font-medium leading-6 text-gray-900">CPF</label>
+            <div className="mt-2">
               <input id="cpf"
                 name="cpf"
-                autocomplete="cpf"
                 type="text"
-                required class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+                required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
                 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
                 focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
@@ -64,6 +103,9 @@ function CadastroUsuario() {
                   id="oab"
                   name="oab"
                   type="text"
+                  value={oab}
+                  required
+                  onChange={(e) => setoab(e.target.value)}
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
                   ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
                    focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -72,17 +114,18 @@ function CadastroUsuario() {
             </div>)}
 
           <div>
-            <div class="flex items-center justify-between">
-              <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Senha</label>
-              <div class="text-sm">
+            <div className="flex items-center justify-between">
+              <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">Senha</label>
+              <div className="text-sm">
               </div>
             </div>
-            <div class="mt-2">
+            <div className="mt-2">
               <input id="password"
                 name="password"
                 type="password"
-                autocomplete="current-password"
-                required class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 
                 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 
                 sm:text-sm sm:leading-6"
               />
@@ -91,11 +134,11 @@ function CadastroUsuario() {
 
           <div>
             <button type="submit"
-              class="flex w-full justify-center rounded-md bg-blue-800 px-3 
+              className="flex w-full justify-center rounded-md bg-blue-800 px-3 
             py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
             focus-visible:outline-indigo-600">
-              Cadastarar
+              Cadastrar
             </button>
           </div>
         </form>
