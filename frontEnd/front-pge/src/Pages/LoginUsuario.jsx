@@ -18,7 +18,7 @@ function LoginUsuario() {
     };
 
     try {
-      const response = await axios.post(`http://localhost:3000/auth/login`, userData);
+      const response = await axios.post(`http://localhost:3000/auth/login/${ endpoint }`, userData);
       console.log('Login realizado com sucesso!', response.data);
 
       // Limpar campos e mensagens de erro
@@ -26,7 +26,7 @@ function LoginUsuario() {
       setSenha('');
       setError('');
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 404) {
         setError('CPF ou senha incorretos. Por favor, verifique e tente novamente.');
       } else {
         setError('Ocorreu um erro durante o login. Tente novamente mais tarde.');
