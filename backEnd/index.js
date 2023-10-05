@@ -8,7 +8,7 @@ const processoJudicialRoutes = require('./routes/ProcessoJudicialRoutes');
 const documentosRoutes = require('./routes/DocumentosRoutes');
 const advogadosRoutes = require('./routes/AdvogadosRoutes');
 const clientesRoutes = require('./routes/ClientesRoutes');
-
+const authRoutes = require('./routes/AuthRoutes');
 
 app.use(
   cors(),
@@ -22,6 +22,7 @@ app.use('/processos-judiciais', processoJudicialRoutes);
 app.use('/documentos', documentosRoutes);
 app.use('/clientes', clientesRoutes);
 app.use('/advogados', advogadosRoutes);
+app.use('/auth', authRoutes);
 
 mongoose
   .connect(
