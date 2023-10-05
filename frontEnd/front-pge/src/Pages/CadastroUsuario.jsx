@@ -16,7 +16,6 @@ function CadastroUsuario() {
     const userData = {
       nome,
       cpf,
-      oab,
       senha
     };
 
