@@ -2,6 +2,9 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { pages } from "./data/pages";
 import { lazy, Suspense, useEffect } from "react";
 import Loading from "./components/Loading";
+import LoginUsuario from "./Pages/LoginUsuario";
+import PaginaInicialUsuario from "./Pages/PaginaInicialUsuario";
+import PortalDocumentos from "./Pages/PortalDocumentos";
 
 const routes = pages.map(e => {
   const Page = lazy(() => import(`./Pages/${e.filename}.jsx`));
@@ -23,9 +26,11 @@ function App() {
 
   return (
     <div>
-      <Suspense fallback={<Loading/>}>
+      <Suspense fallback={<Loading />}>
         <Routes>
-          {routes}
+          <Route path="/" element={<PaginaInicialUsuario />}/>
+          <Route path="/loginusuario" element={<LoginUsuario />}/>
+          <Route path="/loginusuario/:id" element={<PortalDocumentos />} />
         </Routes>
       </Suspense>
     </div>
