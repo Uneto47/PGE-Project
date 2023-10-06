@@ -5,7 +5,7 @@ const clientesController = require('../controller/ClienteController');
 // Rotas CRUD para ClientesAdvogados
 router.post('/', clientesController.create);
 router.get('/', clientesController.get);
-router.get('/:id', clientesController.getByCpf);
+router.get('/:id', clientesController.getById);
 router.put('/:id', clientesController.update);
 router.delete('/:id', clientesController.remove);
 
