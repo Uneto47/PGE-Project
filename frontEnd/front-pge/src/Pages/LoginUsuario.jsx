@@ -12,7 +12,7 @@ function LoginUsuario() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const endpoint = isAdvogado ? "advogados" : "clientes";
+    const endpoint = isAdvogado ? "advogado" : "cliente";
 
     const userData = {
       cpf,
