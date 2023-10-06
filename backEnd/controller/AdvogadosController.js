@@ -53,7 +53,6 @@ const get = async (req, res) => {
 // Read (Detail)
 const getById = async (req, res) => {
   try {
-    const cpf = req.params.cpf;
 
     const advogado = await Advogados.findById(req.params.id);
 
