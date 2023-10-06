@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useJwt } from 'react-jwt' 
 
 function LoginUsuario() {
   const [cpf, setCpf] = useState('');
@@ -30,7 +29,7 @@ function LoginUsuario() {
       setCpf('');
       setSenha('');
       setError('');
-      navigate(`/loginusuario/${response.data.id}`)
+      navigate(`/login/${response.data.id}`)
     } catch (error) {
       if (error.response && error.response.status === 404) {
         setError('CPF ou senha incorretos. Por favor, verifique e tente novamente.');
@@ -41,7 +40,7 @@ function LoginUsuario() {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen px-6 py-12 lg:px-8">
       <div className="mt-2">
         <label>
           <input
