@@ -10,10 +10,10 @@ function PaginaInicialUsuario() {
         <img src={logo} alt="Logo PGE" className="h-12 lg:h-28" />
         <div className="flex flex-row gap-3 justify-end text-white">
           <button className="flex items-center rounded-lg bg-green-500 hover:bg-green-600 p-4 h-12 w-auto shadow-xl text-lg font-bold transition duration-300 ease-in-out">
-            <Link to="/loginusuario">Login</Link>
+            <Link to="/login">Login</Link>
           </button>
           <button className="flex items-center rounded-lg bg-green-500 hover:bg-green-600 p-4 h-12 w-auto shadow-xl text-lg font-bold transition duration-300 ease-in-out">
-            <Link to="/cadastrousuario">Cadastrar</Link>
+            <Link to="/cadastro">Cadastrar</Link>
           </button>
         </div>
       </div>
