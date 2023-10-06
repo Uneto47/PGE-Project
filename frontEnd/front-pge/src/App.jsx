@@ -6,6 +6,7 @@ import LoginUsuario from "./Pages/LoginUsuario";
 import PaginaInicialUsuario from "./Pages/PaginaInicialUsuario";
 import PortalDocumentos from "./Pages/PortalDocumentos";
 import CadastroUsuario from "./Pages/CadastroUsuario";
+import CadastroDocumentos from "./Pages/CadastrosProcessos";
 
 const routes = pages.map(e => {
   const Page = lazy(() => import(`./Pages/${e.filename}.jsx`));
@@ -31,6 +32,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PaginaInicialUsuario />}/>
           <Route path="/cadastro" element={<CadastroUsuario />}/>
+          <Route path="/cadastro-projetos" element={<CadastroDocumentos />}/>
           <Route path="/cadastro/:id" element={<PortalDocumentos />}/>
           <Route path="/login" element={<LoginUsuario />}/>
           <Route path="/login/:id" element={<PortalDocumentos />} />
