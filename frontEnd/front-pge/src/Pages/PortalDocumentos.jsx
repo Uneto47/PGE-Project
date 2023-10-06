@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import Documentos from "../components/documentos/Documentos";
 
 const BASE_URL = "http://localhost:3000";
@@ -17,16 +17,16 @@ function PortalDocumentos() {
 
   useEffect(() => {
     const fetchData = async () => {
-
+      console.log(tipoRecebido)
       if (tipoRecebido === "cliente") {
         try {
-          const usuarioResponse = await axios.get(`${BASE_URL}/clientes/${id}`);
+          const usuarioResponse = await axios.get(`${BASE_URL}/cliente/${id}`);
           setUsuarioData(usuarioResponse.data);
 
           const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/cliente/${id}`);
           setProcessoData(processoResponse.data);
 
-          const envolvidoResponse = await axios.get(`${BASE_URL}/advogados/${processoResponse.data.responsavel}`);
+          const envolvidoResponse = await axios.get(`${BASE_URL}/advogado/${processoResponse.data.responsavel}`);
           setEnvolvido(envolvidoResponse.data);
 
         } catch (error) {
@@ -36,13 +36,13 @@ function PortalDocumentos() {
         }
       } else if (tipoRecebido === "advogado") {
         try {
-          const databaseResponse = await axios.get(`${BASE_URL}/advogados/${id}`);
+          const databaseResponse = await axios.get(`${BASE_URL}/advogado/${id}`);
           setUsuarioData(databaseResponse.data);
 
           const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/advogado/${id}`);
           setProcessoData(processoResponse.data);
 
-          const envolvidoResponse = await axios.get(`${BASE_URL}/clientes/${processoResponse.data.parte}`);
+          const envolvidoResponse = await axios.get(`${BASE_URL}/cliente/${processoResponse.data.parte}`);
           setEnvolvido(envolvidoResponse.data);
         } catch (error) {
           console.error(error);
@@ -64,6 +64,15 @@ function PortalDocumentos() {
           <h1>Dados do {tipoRecebido}:</h1>
           <p>Nome: {usuarioData.nome}</p>
           <p>CPF: {usuarioData.cpf}</p>
+          <Link to="/cadastro-projetos">
+            <button
+              className="flex w-full justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm 
+            font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline 
+            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Teste
+            </button>
+          </Link>
           {processoData ? (
             <div>
               <h1>Dados do processo judicial:</h1>
