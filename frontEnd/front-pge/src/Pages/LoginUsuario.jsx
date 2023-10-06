@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useJwt } from 'react-jwt' 
 
 function LoginUsuario() {
   const [cpf, setCpf] = useState('');
   const [senha, setSenha] = useState('');
   const [isAdvogado, setIsAdvogado] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -21,10 +24,13 @@ function LoginUsuario() {
       const response = await axios.post(`http://localhost:3000/auth/login/${ endpoint }`, userData);
       console.log('Login realizado com sucesso!', response.data);
 
-      // Limpar campos e mensagens de erro
+      // const { decodedToken } = useJwt(response.data.token) 
+      console.log(response.data.id);
+      
       setCpf('');
       setSenha('');
       setError('');
+      navigate(`/loginusuario/${response.data.id}`)
     } catch (error) {
       if (error.response && error.response.status === 404) {
         setError('CPF ou senha incorretos. Por favor, verifique e tente novamente.');
