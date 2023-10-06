@@ -40,8 +40,8 @@ function CadastroUsuario() {
   };
 
   return (
-    <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-
+    <div className="flex min-h-screen flex-col bg-slate-200 px-6 py-12 lg:px-8  ">
+        
       <div className="mt-2">
         <label>
           <input
