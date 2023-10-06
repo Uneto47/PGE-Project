@@ -16,7 +16,7 @@ const fazerAutenticacao = async (usuario, senha, res, tipo) => {
 
 }
 
-router.post('/login/clientes', async (req, res) => {
+router.post('/login/cliente', async (req, res) => {
   const { cpf, senha } = req.body
   try {
     const cliente = await Cliente.findOne({ cpf }).select('+senha')
@@ -32,7 +32,7 @@ router.post('/login/clientes', async (req, res) => {
   }
 });
 
-router.post('/login/advogados', async (req, res) => {
+router.post('/login/advogado', async (req, res) => {
   const { cpf, senha } = req.body
   try {
     const advogado = await Advogado.findOne({ cpf }).select('+senha')
