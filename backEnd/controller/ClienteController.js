@@ -53,11 +53,11 @@ const get = async (req, res) => {
 };
 
 // Read (Detail)
-const getByCpf = async (req, res) => {
+const getById = async (req, res) => {
   try {
     const cpf = req.params.cpf;
 
-    const cliente = await Clientes.findOne({ CPF: cpf });
+    const cliente = await Clientes.findById(req.params.id);
 
     if (!cliente) {
       return res.status(404).json({ error: 'Cliente ou advogado não encontrado' });
@@ -111,4 +111,4 @@ const remove = async (req, res) => {
   }
 };
 
-module.exports = { getByCpf, get, remove, update, create};
+module.exports = { getById, get, remove, update, create};
