@@ -12,7 +12,7 @@ const  fazerAutenticacao = async ( usuario, senha, res) => {
   
   const { _id } = usuario
   const token = jwt.sign({ _id }, process.env.DB_PASSWORD, { expiresIn: "1 day" })
-  res.send({ auth: true, token: token })
+  res.send({ auth: true, id:_id , token: token })
 
 }
 
