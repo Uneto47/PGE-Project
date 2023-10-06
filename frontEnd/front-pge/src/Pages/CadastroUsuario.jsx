@@ -14,7 +14,7 @@ function CadastroUsuario() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const endpoint = isAdvogado ? "advogados" : "clientes" 
+    const endpoint = isAdvogado ? "advogado" : "cliente" 
 
     const userData = {
       nome,
@@ -31,13 +31,12 @@ function CadastroUsuario() {
       const response = await axios.post(`http://localhost:3000/${endpoint}/`, userData);
 
       console.log('Cadastro realizado com sucesso!', response.data);
-      console.log(response.data._id);
 
       setNome('');
       setCpf('');
       setSenha('');
       setoab('');
-      navigate(`/cadastro/${response.data._id}`)
+      navigate(`/cadastro/${response.data._id}`, { state: { tipo: endpoint } })
     } catch (error) {
       console.error('Erro ao cadastrar o usuário', error);
     }
