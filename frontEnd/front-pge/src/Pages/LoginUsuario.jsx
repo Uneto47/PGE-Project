@@ -16,20 +16,17 @@ function LoginUsuario() {
 
     const userData = {
       cpf,
-      senha
+      senha,
     };
 
     try {
       const response = await axios.post(`http://localhost:3000/auth/login/${ endpoint }`, userData);
       console.log('Login realizado com sucesso!', response.data);
-
-      // const { decodedToken } = useJwt(response.data.token) 
-      console.log(response.data.id);
       
       setCpf('');
       setSenha('');
       setError('');
-      navigate(`/login/${response.data.id}`)
+      navigate(`/login/${response.data.id}`, { state: { tipo: response.data.tipo } })
     } catch (error) {
       if (error.response && error.response.status === 404) {
         setError('CPF ou senha incorretos. Por favor, verifique e tente novamente.');
