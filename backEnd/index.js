@@ -20,8 +20,8 @@ app.use(
 
 app.use('/processos-judiciais', processoJudicialRoutes);
 app.use('/documentos', documentosRoutes);
-app.use('/clientes', clientesRoutes);
-app.use('/advogados', advogadosRoutes);
+app.use('/cliente', clientesRoutes);
+app.use('/advogado', advogadosRoutes);
 app.use('/auth', authRoutes);
 
 mongoose
