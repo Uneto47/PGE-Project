@@ -6,7 +6,8 @@ const processoJudicialController = require('../controller/ProcessoJudicialContro
 router.post('/', processoJudicialController.create);
 router.get('/', processoJudicialController.get);
 router.get('/:idnumero', processoJudicialController.getByNumero);
-router.get('/processo/:idCliente', processoJudicialController.getByParte);
+router.get('/processo/cliente/:idCliente', processoJudicialController.getByParte);
+router.get('/processo/advogado/:idAdvogado', processoJudicialController.getByResponsavel);
 router.put('/:id', processoJudicialController.update);
 router.delete('/:id', processoJudicialController.remove);
 
