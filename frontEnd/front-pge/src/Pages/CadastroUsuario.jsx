@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function CadastroUsuario() {
@@ -7,6 +8,8 @@ function CadastroUsuario() {
   const [isAdvogado, setIsAdvogado] = useState(false);
   const [oab, setoab] = useState('');
   const [senha, setSenha] = useState('');
+  const navigate = useNavigate();
+
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -22,18 +25,19 @@ function CadastroUsuario() {
     if (isAdvogado) {
       userData.oab = oab;
     }
-
-    console.log(endpoint)
+    console.log(userData)
 
     try {
       const response = await axios.post(`http://localhost:3000/${endpoint}/`, userData);
 
       console.log('Cadastro realizado com sucesso!', response.data);
+      console.log(response.data._id);
 
       setNome('');
       setCpf('');
       setSenha('');
       setoab('');
+      navigate(`/cadastro/${response.data._id}`)
     } catch (error) {
       console.error('Erro ao cadastrar o usuário', error);
     }
