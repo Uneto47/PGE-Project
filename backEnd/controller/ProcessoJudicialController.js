@@ -84,7 +84,7 @@ const getByResponsavel = async (req, res) => {
   try {
     const responsavel = req.params.cpf;
 
-    const processoJudicial = await ProcessoJudicial.findOne({ responsavel }).populate({ path: "documentos" });;
+    const processoJudicial = await ProcessoJudicial.find({ responsavel }).populate({ path: "documentos" });
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
