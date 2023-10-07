@@ -6,7 +6,9 @@ const clientesController = require('../controller/ClienteController');
 router.post('/', clientesController.create);
 router.get('/', clientesController.get);
 router.get('/:id', clientesController.getById);
+router.get('/cpf/:cpf', clientesController.getByCpf);
 router.put('/:id', clientesController.update);
 router.delete('/:id', clientesController.remove);
 
 module.exports = router;
+ 
