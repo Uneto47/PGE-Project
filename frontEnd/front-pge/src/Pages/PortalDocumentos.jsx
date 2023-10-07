@@ -16,50 +16,43 @@ function PortalDocumentos() {
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      if (tipoRecebido === "cliente") {
-        try {
-          const usuarioResponse = await axios.get(`${BASE_URL}/cliente/${id}`);
-          setUsuarioData(usuarioResponse.data);
+    if (tipoRecebido === "cliente") {
+      axios.get(`${BASE_URL}/cliente/${id}`).then((usuarioResponse) => {
 
-          const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/cliente/${usuarioResponse.data.cpf}`);
+        setUsuarioData(usuarioResponse.data);
+
+        axios.get(`${BASE_URL}/processos-judiciais/processo/cliente/${usuarioResponse.data.cpf}`).then((processoResponse) => {
+
           setProcessoData(processoResponse.data);
-          console.log(processoResponse.data)
 
-          for(let i = 0; i < processoData.length; i++){
-          const envolvidoResponse = await axios.get(`${BASE_URL}/advogado/cpf/${processoResponse.data[i].responsavel}`);
-          setEnvolvido((prevState) => [...prevState, envolvidoResponse.data.nome]); }
-        } catch (error) {
-          console.error(error);
-        } finally {
+          for (let i = 0; i < processoResponse.data.length; i++) {
+            axios.get(`${BASE_URL}/advogado/cpf/${processoResponse.data[i].responsavel}`).then((envolvidoResponse) => {
+              setEnvolvido((prevState) => [...prevState, envolvidoResponse.data.nome]);
+            })
+          }
           setLoading(false);
-        }
-      } else if (tipoRecebido === "advogado") {
-        try {
-          const usuarioResponse = await axios.get(`${BASE_URL}/advogado/${id}`);
-          setUsuarioData(usuarioResponse.data);
+        })
+      })
+      
+    }
+    else if (tipoRecebido === "advogado") {
+      axios.get(`${BASE_URL}/advogado/${id}`).then((usuarioResponse) => {
 
-          const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/advogado/${usuarioResponse.data.cpf}`);
-          console.log(processoResponse.data)
+        setUsuarioData(usuarioResponse.data);
+
+        axios.get(`${BASE_URL}/processos-judiciais/processo/advogado/${usuarioResponse.data.cpf}`).then((processoResponse) => {
           setProcessoData(processoResponse.data);
-          console.log(processoData)
-
-          for(let i = 0; i < processoData.length; i++){
-            const envolvidoResponse = await axios.get(`${BASE_URL}/cliente/cpf/${processoData.data[i].parte}`);
-            setEnvolvido((prevState) => {
-              console.log("att envolvidos", [...prevState, envolvidoResponse.data.nome])
-              return [...prevState, envolvidoResponse.data.nome]
-            }); }
-        } catch (error) {
-          console.error(error);
-        } finally {
           
+          console.log(processoResponse.data);
+          for (let i = 0; i < processoResponse.data.length; i++) {
+            axios.get(`${BASE_URL}/cliente/cpf/${processoResponse.data[i].parte}`).then((envolvidoResponse) => {
+              setEnvolvido((prevState) => [...prevState, envolvidoResponse.data.nome])
+            })
+          }
           setLoading(false);
-        }
-      }
-    };
-
-    fetchData();
+        })
+      })
+    }
   }, []);
 
   return (
