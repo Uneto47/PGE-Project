@@ -30,7 +30,7 @@ const getByNumero = async (req, res) => {
   try {
     const numeroProcesso = req.params.numeroProcesso;
 
-    const processoJudicial = await ProcessoJudicial.findOne({ NumeroProcesso: numeroProcesso }).populate('Parte Responsavel Documentos');
+    const processoJudicial = await ProcessoJudicial.findOne({ NumeroProcesso: numeroProcesso }).populate({ path: "documentos" });
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -46,9 +46,9 @@ const getByNumero = async (req, res) => {
 
 const getByParte = async (req, res) => {
   try {
-    const parte = req.params.idCliente;
+    const parte = req.params.cpf;
 
-    const processoJudicial = await ProcessoJudicial.findOne({ parte });
+    const processoJudicial = await ProcessoJudicial.find({ parte }).populate({ path: "documentos" });
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -62,11 +62,29 @@ const getByParte = async (req, res) => {
   }
 };
 
+const getById = async (req, res) => {
+  try {
+    const _id = req.params.id;
+
+    const processoJudicial = await ProcessoJudicial.find({ _id }).populate({ path: "documentos" });
+
+    if (!processoJudicial) {
+      return res.status(404).json({ error: 'Processo judicial não encontrado' });
+    }
+ 
+    res.status(200).json(processoJudicial);
+  } catch (error) {
+    const msg = error.message;
+    console.error(msg)
+    res.status(500).json({ error: 'Erro ao buscar processo judicial por número de processo' });
+  }
+};
+
 const getByResponsavel = async (req, res) => {
   try {
-    const responsavel = req.params.idAdvogado;
+    const responsavel = req.params.cpf;
 
-    const processoJudicial = await ProcessoJudicial.findOne({ responsavel });
+    const processoJudicial = await ProcessoJudicial.findOne({ responsavel }).populate({ path: "documentos" });;
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -86,7 +104,7 @@ const update = async (req, res) => {
   try {
     const numeroProcesso = req.params.numeroProcesso;
 
-    const processoJudicial = await ProcessoJudicial.findOneAndUpdate({ NumeroProcesso: numeroProcesso }, req.body, { new: true }).populate('Parte Responsavel Documentos');
+    const processoJudicial = await ProcessoJudicial.findOneAndUpdate({ NumeroProcesso: numeroProcesso }, req.body, { new: true }).populate({ path: "documentos" });;
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -121,4 +139,4 @@ const remove = async (req, res) => {
   }
 };
 
-module.exports = { get, getByNumero, getByParte, getByResponsavel, remove, update, create}
+module.exports = { get, getByNumero, getByParte, getById, getByResponsavel, remove, update, create}
