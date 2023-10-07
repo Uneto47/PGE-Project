@@ -6,7 +6,9 @@ const advogadosController = require('../controller/AdvogadosController');
 router.post('/', advogadosController.create);
 router.get('/', advogadosController.get);
 router.get('/:id', advogadosController.getById);
+router.get('/cpf/:cpf', advogadosController.getByCpf);
 router.put('/:id', advogadosController.update);
 router.delete('/:id', advogadosController.remove);
 
 module.exports = router;
+ 
