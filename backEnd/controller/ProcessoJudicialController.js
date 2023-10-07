@@ -28,9 +28,9 @@ const get = async (req, res) => {
 // Read (Detail)
 const getByNumero = async (req, res) => {
   try {
-    const numeroProcesso = req.params.numeroProcesso;
+    const numeroProcesso = req.params.numero;
 
-    const processoJudicial = await ProcessoJudicial.findOne({ NumeroProcesso: numeroProcesso }).populate({ path: "documentos" });
+    const processoJudicial = await ProcessoJudicial.findOne({ numeroprocesso: numeroProcesso }).populate({ path: "documentos" });
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -64,9 +64,9 @@ const getByParte = async (req, res) => {
 
 const getById = async (req, res) => {
   try {
-    const _id = req.params.id;
+    const nome = req.params.id;
 
-    const processoJudicial = await ProcessoJudicial.find({ _id }).populate({ path: "documentos" });
+    const processoJudicial = await ProcessoJudicial.find({ nome }).populate({ path: "documentos" });
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -102,9 +102,9 @@ const getByResponsavel = async (req, res) => {
 // Atualizar um processo judicial pelo número de processo
 const update = async (req, res) => {
   try {
-    const numeroProcesso = req.params.numeroProcesso;
+    const numeroProcesso = req.params.numero;
 
-    const processoJudicial = await ProcessoJudicial.findOneAndUpdate({ NumeroProcesso: numeroProcesso }, req.body, { new: true }).populate({ path: "documentos" });;
+    const processoJudicial = await ProcessoJudicial.findOneAndUpdate({ numeroprocesso: numeroProcesso }, req.body, { new: true }).populate({ path: "documentos" });;
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -123,9 +123,9 @@ const update = async (req, res) => {
 // Excluir um processo judicial pelo número de processo
 const remove = async (req, res) => {
   try {
-    const numeroProcesso = req.params.numeroProcesso;
+    const numeroProcesso = req.params.numero;
 
-    const processoJudicial = await ProcessoJudicial.findOneAndRemove({ NumeroProcesso: numeroProcesso });
+    const processoJudicial = await ProcessoJudicial.findOneAndRemove({ numeroprocesso: numeroProcesso });
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });

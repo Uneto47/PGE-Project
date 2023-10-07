@@ -19,7 +19,7 @@ app.use(
 )
 
 app.use('/processos-judiciais', processoJudicialRoutes);
-app.use('/documentos', documentosRoutes);
+app.use('/documento', documentosRoutes);
 app.use('/cliente', clientesRoutes);
 app.use('/advogado', advogadosRoutes);
 app.use('/auth', authRoutes);

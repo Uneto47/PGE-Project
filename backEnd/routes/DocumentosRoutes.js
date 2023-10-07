@@ -5,7 +5,8 @@ const documentoController = require('../controller/DocumentosController');
 // Rotas CRUD para Documento
 router.post('/', documentoController.create);
 router.get('/', documentoController.get);
-router.get('/:id', documentoController.getById);
+router.get('/id/:id', documentoController.getById);
+router.get('/nome/:nome', documentoController.getByNome);
 router.put('/:id', documentoController.update);
 router.delete('/:id', documentoController.remove);
 

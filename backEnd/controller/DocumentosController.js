@@ -2,6 +2,14 @@ const Documento = require('../models/documentos');
 
 // Create
 const create = async (req, res) => {
+  const { nome } = req.body
+
+  const documento = await Documento.findOne({ nome: nome })
+
+  if (documento) {
+     return res.status(422).json({msg: 'Esse nome já existe'})
+  }
+
   try {
     const documento = new Documento(req.body);
     await documento.save();
@@ -25,10 +33,22 @@ const get = async (req, res) => {
   }
 };
 
+const getByNome = async (req, res) => {
+  try {
+    const nome = req.params.nome
+    const documentos = await Documento.find({ nome });
+    res.status(200).json(documentos);
+  } catch (error) {
+    const msg = error.message;
+    console.error(msg)
+    res.status(500).json({ error: 'Erro ao listar documentos' });
+  }
+};
+
 // Read (Detail)
 const getById = async (req, res) => {
   try {
-    const documento = await Documento.findById(req.params.id);
+    const documento = await Documento.find(req.params.id);
     if (!documento) {
       return res.status(404).json({ error: 'Documento não encontrado' });
     }
@@ -70,4 +90,4 @@ const remove = async (req, res) => {
   }
 };
 
-module.exports = { get, getById, remove, update, create }
+module.exports = { get, getById, getByNome, remove, update, create }
