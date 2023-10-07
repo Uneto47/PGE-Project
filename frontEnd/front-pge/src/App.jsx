@@ -4,9 +4,10 @@ import { lazy, Suspense, useEffect } from "react";
 import Loading from "./components/Loading";
 import LoginUsuario from "./Pages/LoginUsuario";
 import PaginaInicialUsuario from "./Pages/PaginaInicialUsuario";
-import PortalDocumentos from "./Pages/PortalDocumentos";
 import CadastroUsuario from "./Pages/CadastroUsuario";
-import CadastroDocumentos from "./Pages/CadastrosProcessos";
+import CadastrosProcessos from "./Pages/CadastrosProcessos";
+import PaginaUsuario from "./Pages/PaginaUsuario";
+import CadastroDocumentos from "./Pages/CadastroDocumentos";
 
 const routes = pages.map(e => {
   const Page = lazy(() => import(`./Pages/${e.filename}.jsx`));
@@ -32,10 +33,11 @@ function App() {
         <Routes>
           <Route path="/" element={<PaginaInicialUsuario />}/>
           <Route path="/cadastro" element={<CadastroUsuario />}/>
-          <Route path="/cadastro-projetos" element={<CadastroDocumentos />}/>
-          <Route path="/cadastro/:id" element={<PortalDocumentos />}/>
+          <Route path="/cadastro-processos" element={<CadastrosProcessos />}/>
+          <Route path="/cadastro/:id" element={<PaginaUsuario />}/>
           <Route path="/login" element={<LoginUsuario />}/>
-          <Route path="/login/:id" element={<PortalDocumentos />} />
+          <Route path="/login/:id" element={<PaginaUsuario />} />
+          <Route path="/cadastro-documentos" element={<CadastroDocumentos />} />
         </Routes>
       </Suspense>
     </div>

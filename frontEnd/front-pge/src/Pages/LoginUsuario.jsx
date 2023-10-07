@@ -29,7 +29,7 @@ function LoginUsuario() {
       navigate(`/login/${response.data.id}`, { state: { tipo: response.data.tipo } })
     } catch (error) {
       if (error.response && error.response.status === 404) {
-        setError('CPF ou senha incorretos. Por favor, verifique e tente novamente.');
+        setError('CPF ou senha incorretos. Por favor, verifique e tente novamente. Lembre-se de marcar a opção "Sou advogado", caso seja necessário.');
       } else {
         setError('Ocorreu um erro durante o login. Tente novamente mais tarde.');
       }

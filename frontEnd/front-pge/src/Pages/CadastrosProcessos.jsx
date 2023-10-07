@@ -3,7 +3,7 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function CadastroDocumentos() {
+function CadastrosProcessos() {
   const { register, handleSubmit, control, setValue, getValues } = useForm();
 const { fields, append, remove } = useFieldArray({
   control,
@@ -75,7 +75,7 @@ const { fields, append, remove } = useFieldArray({
           </div>
 
           <div>
-            <label htmlFor="Parte" className="block text-sm font-medium leading-6 text-gray-900">Parte</label>
+            <label htmlFor="Parte" className="block text-sm font-medium leading-6 text-gray-900">CPF da Parte</label>
             <div className="mt-2">
               <input id="Parte"
                 name="Parte"
@@ -91,7 +91,7 @@ const { fields, append, remove } = useFieldArray({
 
           <div>
             <label htmlFor="Responsavel" className="block text-sm font-medium leading-6 text-gray-900">
-              Responsavel
+              CPF do Responsavel
             </label>
             <div className="mt-2">
               <input
@@ -197,4 +197,4 @@ const { fields, append, remove } = useFieldArray({
   );
 }
 
-export default CadastroDocumentos;
+export default CadastrosProcessos;

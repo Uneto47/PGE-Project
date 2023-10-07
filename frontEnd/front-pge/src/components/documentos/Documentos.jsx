@@ -11,6 +11,7 @@ function Documentos(props) {
       try {
         const documentosArray = [];
 
+
         for (const documento of processoData.documentos) {
           documentosArray.push(documento);
         }
@@ -31,9 +32,7 @@ function Documentos(props) {
         <ul>
           {documentos.map((documento, index) => (
             <li key={index}>
-              <p>{documento.nome}</p>
-              <p>{documento.caminho} </p>
-              <p>{documento.extensao}</p>
+              <p>{documento.nome}.{documento.extensao} - {documento.caminho} </p>
             </li>
           ))}
         </ul>
