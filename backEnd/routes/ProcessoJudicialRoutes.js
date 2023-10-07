@@ -14,3 +14,4 @@ router.put('/:id', processoJudicialController.update);
 router.delete('/:id', processoJudicialController.remove);
 
 module.exports = router;
+ 
