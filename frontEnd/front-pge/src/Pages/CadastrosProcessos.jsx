@@ -28,7 +28,7 @@ const { fields, append, remove } = useFieldArray({
       responsavel,
       documentos,
       tema,
-      valorCausa
+      valorcausa: valorCausa
     };
 
     try {
