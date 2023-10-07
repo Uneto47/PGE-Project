@@ -11,9 +11,8 @@ function Documentos(props) {
       try {
         const documentosArray = [];
 
-        for (const documentoId of processoData.documentos) {
-          const documentoResponse = await axios.get(`http://localhost:3000/documentos/${documentoId}`);
-          documentosArray.push(documentoResponse.data);
+        for (const documento of processoData.documentos) {
+          documentosArray.push(documento);
         }
 
         setDocumentos(documentosArray);
