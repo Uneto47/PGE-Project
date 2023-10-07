@@ -9,26 +9,26 @@ function PortalDocumentos() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [usuarioData, setUsuarioData] = useState(null);
-  const [processoData, setProcessoData] = useState(null);
-  const [envolvido, setEnvolvido] = useState(null);
+  const [processoData, setProcessoData] = useState([]);
+  const [envolvido, setEnvolvido] = useState([]);
   const location = useLocation();
   const tipoRecebido = location.state.tipo;
 
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(tipoRecebido)
       if (tipoRecebido === "cliente") {
         try {
           const usuarioResponse = await axios.get(`${BASE_URL}/cliente/${id}`);
           setUsuarioData(usuarioResponse.data);
 
-          const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/cliente/${id}`);
+          const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/cliente/${usuarioResponse.data.cpf}`);
           setProcessoData(processoResponse.data);
+          console.log(processoResponse.data)
 
-          const envolvidoResponse = await axios.get(`${BASE_URL}/advogado/${processoResponse.data.responsavel}`);
-          setEnvolvido(envolvidoResponse.data);
-
+          for(let i = 0; i < processoData.length; i++){
+          const envolvidoResponse = await axios.get(`${BASE_URL}/advogado/cpf/${processoResponse.data[i].responsavel}`);
+          setEnvolvido((prevState) => [...prevState, envolvidoResponse.data.nome]); }
         } catch (error) {
           console.error(error);
         } finally {
@@ -36,17 +36,24 @@ function PortalDocumentos() {
         }
       } else if (tipoRecebido === "advogado") {
         try {
-          const databaseResponse = await axios.get(`${BASE_URL}/advogado/${id}`);
-          setUsuarioData(databaseResponse.data);
+          const usuarioResponse = await axios.get(`${BASE_URL}/advogado/${id}`);
+          setUsuarioData(usuarioResponse.data);
 
-          const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/advogado/${id}`);
+          const processoResponse = await axios.get(`${BASE_URL}/processos-judiciais/processo/advogado/${usuarioResponse.data.cpf}`);
+          console.log(processoResponse.data)
           setProcessoData(processoResponse.data);
+          console.log(processoData)
 
-          const envolvidoResponse = await axios.get(`${BASE_URL}/cliente/${processoResponse.data.parte}`);
-          setEnvolvido(envolvidoResponse.data);
+          for(let i = 0; i < processoData.length; i++){
+            const envolvidoResponse = await axios.get(`${BASE_URL}/cliente/cpf/${processoData.data[i].parte}`);
+            setEnvolvido((prevState) => {
+              console.log("att envolvidos", [...prevState, envolvidoResponse.data.nome])
+              return [...prevState, envolvidoResponse.data.nome]
+            }); }
         } catch (error) {
           console.error(error);
         } finally {
+          
           setLoading(false);
         }
       }
@@ -73,15 +80,20 @@ function PortalDocumentos() {
               Teste
             </button>
           </Link>
-          {processoData ? (
+          {processoData && processoData.length > 0 ? (
             <div>
-              <h1>Dados do processo judicial:</h1>
-              <p>Número: {processoData.numeroprocesso}</p>
-              <p>{tipoRecebido === "advogado" ? "Cliente" : "Advogado"}: {envolvido.nome}</p>
-              <Documentos processoData={processoData} />
-              <p>Tema: {processoData.tema}</p>
-              <p>Valor da Causa: {processoData.valorcausa}</p>
+              {processoData.map((processo, index) => (
+                <div key={index}>
+                  <h1>Dados do processo judicial:</h1>
+                  <p>Número: {processo.numeroprocesso}</p>
+                  <p>{tipoRecebido === "advogado" ? "Cliente" : "Advogado"}: {envolvido[index]}</p>
+                  <Documentos processoData={processo} />
+                  <p>Tema: {processo.tema}</p>
+                  <p>Valor da Causa: {processo.valorcausa}</p>
+                </div>
+              ))}
             </div>
+
           ) : (
             <p>Ainda não existem processos relacionados a este usuário</p>
           )}
