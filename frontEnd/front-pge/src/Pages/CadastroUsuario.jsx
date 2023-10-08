@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 function CadastroUsuario() {
@@ -14,7 +14,7 @@ function CadastroUsuario() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const endpoint = isAdvogado ? "advogado" : "cliente" 
+    const endpoint = isAdvogado ? "advogado" : "cliente"
 
     const userData = {
       nome,
@@ -43,27 +43,13 @@ function CadastroUsuario() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-200 px-6 py-12 lg:px-8  ">
-        
-      <div className="mt-2">
-        <label>
-          <input
-            type="checkbox"
-            checked={isAdvogado}
-            onChange={() => setIsAdvogado(!isAdvogado)}
-            className="mr-2"
-          />
-          Sou advogado
-        </label>
-      </div>
-
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Faça o Cadastro da sua conta
-        </h2>
-      </div>
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen intems-center justify-center">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
+        <div className="text-center text-2xl font-bold leading-9 tracking-tight p-5 text-gray-900">
+          <h2>
+            Faça o Cadastro da sua conta
+          </h2>
+        </div>
         <form className="space-y-6" onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="Nome" className="block text-sm font-medium leading-6 text-gray-900">Nome</label>
@@ -71,7 +57,7 @@ function CadastroUsuario() {
               <input id="Nome"
                 name="Nome"
                 type="text"
-                value = {nome}
+                value={nome}
                 onChange={(e) => setNome(e.target.value)}
                 required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
                 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
@@ -134,6 +120,17 @@ function CadastroUsuario() {
             </div>
           </div>
 
+          <div className="mt-2">
+            <label>
+              <input
+                type="checkbox"
+                checked={isAdvogado}
+                onChange={() => setIsAdvogado(!isAdvogado)}
+                className="mr-2"
+              />
+              Sou advogado
+            </label>
+          </div>
           <div>
             <button type="submit"
               className="flex w-full justify-center rounded-md bg-blue-800 px-3 
@@ -144,7 +141,18 @@ function CadastroUsuario() {
             </button>
           </div>
         </form>
-
+        <div className='flex items-center justify-center bg-slate-100 mt-2 rounded-lg shadow relative'>
+          <Link to="/login">
+            <p className='flex justify-center p-5'> Ja tem cadastro? Entre na sua conta! </p>
+          </Link>
+        </div>
+        {/* <Link to="/">
+          <button
+            className="flex w-full mt-2 justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Voltar para pagina Inicial
+          </button>
+        </Link> */}
       </div>
     </div>
   );
