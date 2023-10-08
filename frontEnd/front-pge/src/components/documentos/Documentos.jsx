@@ -32,7 +32,7 @@ function Documentos(props) {
         <ul>
           {documentos.map((documento, index) => (
             <li key={index}>
-              <p>{documento.nome}.{documento.extensao} - {documento.caminho} </p>
+              <p className="ml-2">{documento.nome}.{documento.extensao} - {documento.caminho} </p>
             </li>
           ))}
         </ul>

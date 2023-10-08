@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 function LoginUsuario() {
@@ -20,9 +20,9 @@ function LoginUsuario() {
     };
 
     try {
-      const response = await axios.post(`http://localhost:3000/auth/login/${ endpoint }`, userData);
+      const response = await axios.post(`http://localhost:3000/auth/login/${endpoint}`, userData);
       console.log('Login realizado com sucesso!', response.data);
-      
+
       setCpf('');
       setSenha('');
       setError('');
@@ -37,31 +37,21 @@ function LoginUsuario() {
   };
 
   return (
-    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen px-6 py-12 lg:px-8">
+    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen intems-center justify-center">
       <div className="mt-2">
-        <label>
-          <input
-            type="checkbox"
-            checked={isAdvogado}
-            onChange={() => setIsAdvogado(!isAdvogado)}
-            className="mr-2"
-          />
-          Sou advogado
-        </label>
       </div>
-
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Faça login em sua conta
-        </h2>
-      </div>
-
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h2 className="text-center text-2xl font-bold leading-9 tracking-tight p-5 text-gray-900">
+            Faça login em sua conta
+          </h2>
+        </div>
         <form className="space-y-6" onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="Cpf" className="block text-sm font-medium leading-6 text-gray-900">CPF</label>
             <div className="mt-2">
               <input
+                placeholder='Digite seu CPF'
                 id="cpf"
                 name="cpf"
                 type="text"
@@ -80,6 +70,7 @@ function LoginUsuario() {
             </div>
             <div className="mt-2">
               <input
+                placeholder='Digite sua senha'
                 id="password"
                 name="password"
                 type="password"
@@ -91,19 +82,43 @@ function LoginUsuario() {
             </div>
           </div>
 
+          <label>
+            <input
+              type="checkbox"
+              checked={isAdvogado}
+              onChange={() => setIsAdvogado(!isAdvogado)}
+              className="mr-2 mt-5"
+            />
+            Sou advogado
+          </label>
+
           {error && (
             <div className="text-red-500 text-sm">{error}</div>
           )}
 
-          <div>
+          <div >
             <button
               type="submit"
               className="flex w-full justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Login
             </button>
+
+
           </div>
         </form>
+        <div className='flex items-center justify-center bg-slate-100 mt-2 rounded-lg shadow relative'>
+          <Link to="/cadastro">
+            <p className='flex justify-center p-5'> Ainda não tem cadastro? Cadastre-se </p>
+          </Link>
+        </div>
+        {/* <Link to="/">
+          <button
+            className="flex w-full mt-2 justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Voltar para pagina Inicial
+          </button>
+        </Link> */}
       </div>
     </div>
   );

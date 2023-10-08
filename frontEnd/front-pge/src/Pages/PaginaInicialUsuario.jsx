@@ -9,12 +9,16 @@ function PaginaInicialUsuario() {
       <div className="flex justify-between items-center pr-5 bg-blue-900">
         <img src={logo} alt="Logo PGE" className="h-12 lg:h-28" />
         <div className="flex flex-row gap-3 justify-end text-white">
-          <button className="flex items-center rounded-lg bg-green-500 hover:bg-green-600 p-4 h-12 w-auto shadow-xl text-lg font-bold transition duration-300 ease-in-out">
-            <Link to="/login">Login</Link>
-          </button>
-          <button className="flex items-center rounded-lg bg-green-500 hover:bg-green-600 p-4 h-12 w-auto shadow-xl text-lg font-bold transition duration-300 ease-in-out">
-            <Link to="/cadastro">Cadastrar</Link>
-          </button>
+          <Link to="/login">
+            <button className="flex items-center rounded-lg bg-green-500 hover:bg-green-600 p-4 h-12 w-auto shadow-xl text-lg font-bold transition duration-300 ease-in-out">
+              Login
+            </button>
+          </Link>
+          <Link to="/cadastro">
+            <button className="flex items-center rounded-lg bg-green-500 hover:bg-green-600 p-4 h-12 w-auto shadow-xl text-lg font-bold transition duration-300 ease-in-out">
+              Cadastrar
+            </button>
+          </Link>
         </div>
       </div>
       <Body>

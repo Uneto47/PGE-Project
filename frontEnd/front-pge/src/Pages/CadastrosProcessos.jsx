@@ -5,10 +5,10 @@ import axios from 'axios';
 
 function CadastrosProcessos() {
   const { register, handleSubmit, control, setValue, getValues } = useForm();
-const { fields, append, remove } = useFieldArray({
-  control,
-  name: 'documentos',
-});
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'documentos',
+  });
 
   const [numeroprocesso, setNumeroProcesso] = useState('');
   const [documentos, setDocumentos] = useState([]);
@@ -16,6 +16,8 @@ const { fields, append, remove } = useFieldArray({
   const [responsavel, setResponsavel] = useState('');
   const [tema, setTema] = useState('');
   const [valorCausa, setValorCausa] = useState('');
+  const navigate = useNavigate();
+
 
 
   const handleFormSubmit = async (data) => {
@@ -42,23 +44,19 @@ const { fields, append, remove } = useFieldArray({
       setParte('')
       setResponsavel('')
       setValorCausa('')
-
-      // navigate(`/cadastro/${response.data._id}`, { state: { tipo: endpoint } })
+      navigate(-1)
     } catch (error) {
       console.error('Erro ao cadastrar o processo', error);
     }
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-200 px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Novo Processo
-        </h2>
-      </div>
-
-      <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" onSubmit={handleSubmit(handleFormSubmit)}>
+    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen intems-center justify-center py-10">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
+          <h2 className="text-center text-2xl font-bold leading-9 py-4 tracking-tight text-gray-900">
+            Novo Processo
+          </h2>
+        <form className="space-y-2" onSubmit={handleSubmit(handleFormSubmit)}>
           <div>
             <label htmlFor="Numero do Processo" className="block text-sm font-medium leading-6 text-gray-900">Numero do Processo</label>
             <div className="mt-2">
@@ -120,7 +118,7 @@ const { fields, append, remove } = useFieldArray({
                     name={`documentos[${index}]`}
                     type="text"
                     defaultValue={''}
-                    {...register(`documentos[${index}]`)} 
+                    {...register(`documentos[${index}]`)}
                     className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                   <button
@@ -187,7 +185,7 @@ const { fields, append, remove } = useFieldArray({
             py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 
             focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
             focus-visible:outline-indigo-600">
-              Cadastrar
+              Cadastrar Processo
             </button>
           </div>
         </form>

@@ -8,6 +8,7 @@ function CadastroDocumentos() {
   const [caminho, setCaminho] = useState('');
   const [extensao, setExtensao] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate()
 
 
   const handleFormSubmit = async (e) => {
@@ -19,7 +20,7 @@ function CadastroDocumentos() {
       caminho,
       extensao
     };
-    
+
     try {
       const response = await axios.post(`http://localhost:3000/documento/`, documentoData);
       console.log('Documento cadastrado com sucesso!', response.data);
@@ -28,6 +29,7 @@ function CadastroDocumentos() {
       setCaminho('')
       setExtensao('')
       setError('')
+      navigate(-1)
 
     } catch (error) {
       if (error.response && error.response.status === 422) {
@@ -39,20 +41,20 @@ function CadastroDocumentos() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-200 px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Novo Documento
-        </h2>
-      </div>
+    <div className="flex min-h-screen flex-col bg-slate-200 intems-center justify-center">
 
-      <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
         <form className="space-y-6" onSubmit={handleFormSubmit}>
-
+          <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 className="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+              Novo Documento
+            </h2>
+          </div>
           <div>
-            <label htmlFor="Nome do Documento" className="block text-sm font-medium leading-6 text-gray-900">Nome do Documento</label>
+            <label htmlFor="Nome do Documento" className="block text-sm font-medium leading-6 text-gray-900">Nome</label>
             <div className="mt-2">
               <input id="NomeDocumento"
+                placeholder='Nome do documento'
                 name="Nome do Documento"
                 type="text"
                 value={nome}
@@ -65,9 +67,10 @@ function CadastroDocumentos() {
           </div>
 
           <div>
-            <label htmlFor="Caminho do Documento" className="block text-sm font-medium leading-6 text-gray-900">Caminho do Documento</label>
+            <label htmlFor="Caminho do Documento" className="block text-sm font-medium leading-6 text-gray-900">Caminho</label>
             <div className="mt-2">
               <input id="Caminho do Documento"
+                placeholder='Caminho do documento'
                 name="Caminho do Documento"
                 type="text"
                 value={caminho}
@@ -80,9 +83,10 @@ function CadastroDocumentos() {
           </div>
 
           <div>
-            <label htmlFor="Extensão do Documento" className="block text-sm font-medium leading-6 text-gray-900">Extensão do Documento</label>
+            <label htmlFor="Extensão do Documento" className="block text-sm font-medium leading-6 text-gray-900">Extensão</label>
             <div className="mt-2">
               <input id="Extensão do Documento"
+                placeholder='Extensão do documento, ex: PDF'
                 name="Extensão do Documento"
                 type="text"
                 value={extensao}
