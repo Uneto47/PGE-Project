@@ -35,23 +35,28 @@ Resolvendo o desafio por meio das tecnologias previamente escolhidas, incluindo 
 - Inclusão de documentos
 - Implementação de autenticação de usuário (login)
 
+## Exemplos Básicos do Projeto
 
-### Exemplos basicos do Porjeto
+### Tela de Usuário
+![Tela de Usuário](https://github.com/Uneto47/PGE-Project/assets/87950587/07941a0c-e196-4e84-9b63-a57f17a6d72f | width=300)
 
-| Tela de Usuário  | Página Inicial   |
-|------------------------|------------------------|
-| <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/e61dceaf-357f-4ae3-896f-7f5b511cbeb2" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/41d044da-85a8-42f6-b7f7-1344000fdf42" width="300"> |
+### Página Inicial
+![Página Inicial](https://github.com/Uneto47/PGE-Project/assets/87950587/6207d235-df2f-4d80-a532-f5c181e7229a | width=300)
 
-| Tela de Cadastro de Cliente  | Tela de Cadastro de Advogado  |
-|-------------------------------------|-------------------------------|
-| <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/bac3f9fd-a991-42e1-b3ae-96c33068814e" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/f05aded2-e499-4629-ab2a-ed3e0f8bd84f" width="300">  |
+### Tela de Cadastro de Cliente
+![Tela de Cadastro de Cliente](https://github.com/Uneto47/PGE-Project/assets/87950587/bc51de54-ece5-4550-b982-13defc1c38c8 | width=300)
 
-|   Cadastro de Documento  | Cadastro de Processo  |
-|------------------------------|-----------------------------|
-|   <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/3a1a03fb-647e-4909-b065-1e1372c53db9" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/28008069-1dbb-48df-b6f9-df4bfb9ac3f4" width="300"> |
+### Tela de Cadastro de Advogado
+![Tela de Cadastro de Advogado](https://github.com/Uneto47/PGE-Project/assets/87950587/9ba159f8-eeee-476b-9e65-ab90a8e72541 | width=300)
 
-| Tela de Login de Usuário  |  Tela de Login com Erro  |
-|----------------------------------|------------------------------|
-| <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/0d4a576a-54e3-4b67-bcad-4953b4dffafb" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/6e29c14e-bec3-4311-b4d4-3b7cb659a7bd" width="300"> |
+### Cadastro de Documento
+![Cadastro de Documento](https://github.com/Uneto47/PGE-Project/assets/87950587/12fbceff-1360-475e-8071-62ee9688cfea | width=300)
 
+### Cadastro de Processo
+![Cadastro de Processo](https://github.com/Uneto47/PGE-Project/assets/87950587/d1c29639-3104-4058-bbc4-a145da25835b | width=300)
 
+### Tela de Login de Usuário
+![Tela de Login de Usuário](https://github.com/Uneto47/PGE-Project/assets/87950587/9027d76f-9ad7-45e6-b9bb-36459c47a0a3 | width=300)
+
+### Tela de Login com Erro
+![Tela de Login com Erro](https://github.com/Uneto47/PGE-Project/assets/87950587/e4ff8c56-95a8-4cb7-90ec-620139f2fc2c | width=300)
