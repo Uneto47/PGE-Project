@@ -35,20 +35,6 @@ Resolvendo o desafio por meio das tecnologias previamente escolhidas, incluindo 
 - Inclusão de documentos
 - Implementação de autenticação de usuário (login)
 
-### Exemplos basicos do Porjeto
-
-| Tela de Usuário  | Página Inicial   |
-|------------------------|------------------------|
-| <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/e61dceaf-357f-4ae3-896f-7f5b511cbeb2" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/41d044da-85a8-42f6-b7f7-1344000fdf42" width="300"> |
-
-| Tela de Cadastro de Cliente  | Tela de Cadastro de Advogado  |
-|-------------------------------------|-------------------------------|
-| <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/bac3f9fd-a991-42e1-b3ae-96c33068814e" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/f05aded2-e499-4629-ab2a-ed3e0f8bd84f" width="300">  |
-
-|   Cadastro de Documento  | Cadastro de Processo  |
-|------------------------------|-----------------------------|
-|   <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/3a1a03fb-647e-4909-b065-1e1372c53db9" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/28008069-1dbb-48df-b6f9-df4bfb9ac3f4" width="300"> |
-
 | Tela de Login de Usuário  |  Tela de Login com Erro  |
 |----------------------------------|------------------------------|
 | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/0d4a576a-54e3-4b67-bcad-4953b4dffafb" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/6e29c14e-bec3-4311-b4d4-3b7cb659a7bd" width="300"> |
