@@ -37,7 +37,7 @@ Resolvendo o desafio por meio das tecnologias previamente escolhidas, incluindo 
 
 ### Exemplos basicos do Porjeto
 
-| Tela de Usuário  | Página Inicial  |
+| Tela de Usuário  | Página Inicial   |
 |------------------------|------------------------|
 | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/e61dceaf-357f-4ae3-896f-7f5b511cbeb2" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/41d044da-85a8-42f6-b7f7-1344000fdf42" width="300"> |
 
