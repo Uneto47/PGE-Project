@@ -37,15 +37,11 @@ function LoginUsuario() {
   };
 
   return (
-    <div className="flex flex-col gap-5 bg-slate-200 mt-10 intems-center justify-center">
-      <div className="mt-2">
-      </div>
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="text-center text-2xl font-bold leading-9 tracking-tight p-5 text-gray-900">
+    <div className="flex flex-col gap-5 py-10 items-center justify-center">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white mt-2 p-4 rounded-lg shadow relative">
+          <h2 className="text-center text-xl font-bold leading-9 tracking-tight p-5 text-gray-900">
             Faça login em sua conta
           </h2>
-        </div>
         <form className="space-y-6" onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="Cpf" className="block text-sm font-medium leading-6 text-gray-900">CPF</label>
@@ -77,7 +73,9 @@ function LoginUsuario() {
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
                 required
-                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 
+                ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 
+                sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -93,18 +91,19 @@ function LoginUsuario() {
           </label>
 
           {error && (
-            <div className="text-red-500 text-sm">{error}</div>
+            <p className="text-red-500 text-sm max-w-xs">{error}</p>
           )}
 
           <div >
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="flex w-full justify-center rounded-md bg-blue-800 px-3 
+              py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+               focus-visible:outline-indigo-600"
             >
               Login
             </button>
-
-
           </div>
         </form>
         <div className='flex items-center justify-center bg-slate-100 mt-2 rounded-lg shadow relative'>
@@ -112,13 +111,6 @@ function LoginUsuario() {
             <p className='flex justify-center p-5'> Ainda não tem cadastro? Cadastre-se </p>
           </Link>
         </div>
-        {/* <Link to="/">
-          <button
-            className="flex w-full mt-2 justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Voltar para pagina Inicial
-          </button>
-        </Link> */}
       </div>
     </div>
   );

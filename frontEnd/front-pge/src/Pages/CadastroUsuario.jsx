@@ -43,13 +43,11 @@ function CadastroUsuario() {
   };
 
   return (
-    <div className="flex flex-col gap-5 py-5 intems-center justify-center">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
-        <div className="text-center text-2xl font-bold leading-9 tracking-tight p-5 text-gray-900">
-          <h2>
+    <div className="flex flex-col gap-5 py-10 items-center justify-center">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white mt-2 p-4 rounded-lg shadow relative">
+          <h2 className='text-center text-xl font-bold leading-9 tracking-tight p-5 text-gray-900'>
             Faça o Cadastro da sua conta
           </h2>
-        </div>
         <form className="space-y-6" onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="Nome" className="block text-sm font-medium leading-6 text-gray-900">Nome</label>
@@ -126,7 +124,7 @@ function CadastroUsuario() {
                 type="checkbox"
                 checked={isAdvogado}
                 onChange={() => setIsAdvogado(!isAdvogado)}
-                className="mr-2"
+                className="mr-2 mt-5"
               />
               Sou advogado
             </label>
@@ -146,13 +144,6 @@ function CadastroUsuario() {
             <p className='flex justify-center p-5'> Ja tem cadastro? Entre na sua conta! </p>
           </Link>
         </div>
-        {/* <Link to="/">
-          <button
-            className="flex w-full mt-2 justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Voltar para pagina Inicial
-          </button>
-        </Link> */}
       </div>
     </div>
   );

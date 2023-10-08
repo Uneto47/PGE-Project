@@ -18,10 +18,7 @@ function CadastrosProcessos() {
   const [valorCausa, setValorCausa] = useState('');
   const navigate = useNavigate();
 
-
-
   const handleFormSubmit = async (data) => {
-
     const { documentos } = data;
 
     const processoData = {
@@ -51,8 +48,8 @@ function CadastrosProcessos() {
   };
 
   return (
-    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen intems-center justify-center py-10">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
+    <div className="flex flex-col gap-5 items-center justify-center py-10">
+      <div className="sm:mx-auto sm:w-full sm:max-w-md bg-white p-4 rounded-lg shadow relative">
         <h2 className="text-center text-2xl font-bold leading-9 py-4 tracking-tight text-gray-900">
           Novo Processo
         </h2>
@@ -60,15 +57,15 @@ function CadastrosProcessos() {
           <div>
             <label htmlFor="Numero do Processo" className="block text-sm font-medium leading-6 text-gray-900">Numero do Processo</label>
             <div className="mt-2">
-              <input id="Numeroprocesso"
+              <input
+                id="Numeroprocesso"
                 placeholder='Digite o número do processo'
                 name="Numero do Processo"
                 type="text"
                 value={numeroprocesso}
                 onChange={(e) => setNumeroProcesso(e.target.value)}
-                required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
-                ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
-                focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                required
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -76,15 +73,15 @@ function CadastrosProcessos() {
           <div>
             <label htmlFor="Parte" className="block text-sm font-medium leading-6 text-gray-900">CPF da Parte</label>
             <div className="mt-2">
-              <input id="Parte"
+              <input
+                id="Parte"
                 placeholder='Digite o CPF da parte'
                 name="Parte"
                 type="text"
                 value={parte}
                 onChange={(e) => setParte(e.target.value)}
-                required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
-                ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset 
-                focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                required
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -102,9 +99,7 @@ function CadastrosProcessos() {
                 required
                 value={responsavel}
                 onChange={(e) => setResponsavel(e.target.value)}
-                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm 
-                  ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset
-                   focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -151,15 +146,15 @@ function CadastrosProcessos() {
               </div>
             </div>
             <div className="mt-2">
-              <input id="Tema"
+              <input
+                id="Tema"
                 placeholder='Digite o tema do processo'
                 name="Tema"
                 type="text"
                 value={tema}
                 onChange={(e) => setTema(e.target.value)}
-                required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 
-                ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 
-                sm:text-sm sm:leading-6"
+                required
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -171,31 +166,28 @@ function CadastrosProcessos() {
               </div>
             </div>
             <div className="mt-2">
-              <input id="Valor do Processo"
+              <input
+                id="Valor do Processo"
                 placeholder='Digite o valor do processo'
                 name="Valor do Processo"
                 type="number"
                 value={valorCausa}
                 onChange={(e) => setValorCausa(e.target.value)}
-                required className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 
-                ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 
-                sm:text-sm sm:leading-6"
+                required
+                className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
 
-
           <div>
-            <button type="submit"
-              className="flex w-full justify-center rounded-md bg-blue-800 px-3 
-            py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 
-            focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 
-            focus-visible:outline-indigo-600">
+            <button
+              type="submit"
+              className="flex w-full justify-center rounded-md bg-blue-800 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
               Cadastrar Processo
             </button>
           </div>
         </form>
-
       </div>
     </div>
   );
