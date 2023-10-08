@@ -1,9 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const swaggerUI = require('swagger-ui-express')
+const swaggerDocument = require('./swagger.json')
 const cors = require('cors')
-const app = express()
 require('dotenv').config()
 
+const app = express()
 const processoJudicialRoutes = require('./routes/ProcessoJudicialRoutes');
 const documentosRoutes = require('./routes/DocumentosRoutes');
 const advogadosRoutes = require('./routes/AdvogadosRoutes');
@@ -23,6 +25,7 @@ app.use('/documento', documentosRoutes);
 app.use('/cliente', clientesRoutes);
 app.use('/advogado', advogadosRoutes);
 app.use('/auth', authRoutes);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument))
 
 mongoose
   .connect(
