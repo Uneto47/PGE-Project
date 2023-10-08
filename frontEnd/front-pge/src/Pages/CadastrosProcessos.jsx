@@ -53,14 +53,15 @@ function CadastrosProcessos() {
   return (
     <div className="flex flex-col gap-5 bg-slate-200 min-h-screen intems-center justify-center py-10">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
-          <h2 className="text-center text-2xl font-bold leading-9 py-4 tracking-tight text-gray-900">
-            Novo Processo
-          </h2>
+        <h2 className="text-center text-2xl font-bold leading-9 py-4 tracking-tight text-gray-900">
+          Novo Processo
+        </h2>
         <form className="space-y-2" onSubmit={handleSubmit(handleFormSubmit)}>
           <div>
             <label htmlFor="Numero do Processo" className="block text-sm font-medium leading-6 text-gray-900">Numero do Processo</label>
             <div className="mt-2">
               <input id="Numeroprocesso"
+                placeholder='Digite o número do processo'
                 name="Numero do Processo"
                 type="text"
                 value={numeroprocesso}
@@ -76,6 +77,7 @@ function CadastrosProcessos() {
             <label htmlFor="Parte" className="block text-sm font-medium leading-6 text-gray-900">CPF da Parte</label>
             <div className="mt-2">
               <input id="Parte"
+                placeholder='Digite o CPF da parte'
                 name="Parte"
                 type="text"
                 value={parte}
@@ -93,6 +95,7 @@ function CadastrosProcessos() {
             </label>
             <div className="mt-2">
               <input
+                placeholder='Digite o CPF do responsavel'
                 id="Responsavel"
                 name="Responsavel"
                 type="text"
@@ -114,6 +117,7 @@ function CadastrosProcessos() {
               {fields.map((field, index) => (
                 <div key={field.id}>
                   <input
+                    placeholder='Digite o nome do documento'
                     id={`documentos[${index}]`}
                     name={`documentos[${index}]`}
                     type="text"
@@ -124,7 +128,7 @@ function CadastrosProcessos() {
                   <button
                     type="button"
                     onClick={() => remove(index)}
-                    className="mt-2 px-2 py-1 text-sm font-semibold text-red-600 border-1 border-gray-300 rounded-md hover:bg-red-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                    className="mt-2 px-2 py-1 text-sm font-semibold text-red-600 border-1 border-gray-300 rounded-md bg-red-100 hover:bg-red-200"
                   >
                     Remover
                   </button>
@@ -133,7 +137,7 @@ function CadastrosProcessos() {
               <button
                 type="button"
                 onClick={() => append()} // Use um objeto com um valor padrão para o campo
-                className="mt-2 px-2 py-1 text-sm font-semibold text-gray-900 border-1 border-gray-300 rounded-md hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                className="mt-2 px-2 py-1 text-sm font-semibold border-1 border-gray-300 rounded-md bg-green-100 hover:bg-green-200"
               >
                 Adicionar
               </button>
@@ -148,6 +152,7 @@ function CadastrosProcessos() {
             </div>
             <div className="mt-2">
               <input id="Tema"
+                placeholder='Digite o tema do processo'
                 name="Tema"
                 type="text"
                 value={tema}
@@ -167,6 +172,7 @@ function CadastrosProcessos() {
             </div>
             <div className="mt-2">
               <input id="Valor do Processo"
+                placeholder='Digite o valor do processo'
                 name="Valor do Processo"
                 type="number"
                 value={valorCausa}

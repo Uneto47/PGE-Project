@@ -41,7 +41,7 @@ function CadastroDocumentos() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-200 intems-center justify-center">
+    <div className="flex flex-col mt-14 intems-center justify-center">
 
       <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
         <form className="space-y-6" onSubmit={handleFormSubmit}>

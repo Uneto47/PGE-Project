@@ -37,7 +37,7 @@ function LoginUsuario() {
   };
 
   return (
-    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen intems-center justify-center">
+    <div className="flex flex-col gap-5 bg-slate-200 mt-10 intems-center justify-center">
       <div className="mt-2">
       </div>
       <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">

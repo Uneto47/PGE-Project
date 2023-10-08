@@ -27,17 +27,17 @@ function Documentos(props) {
 
   return (
     <div>
-      <h1>DOCUMENTOS</h1>
+      <strong><h1>DOCUMENTOS</h1></strong>
       {documentos.length > 0 ? (
         <ul>
           {documentos.map((documento, index) => (
             <li key={index}>
-              <p className="ml-2">{documento.nome}.{documento.extensao} - {documento.caminho} </p>
+              <p className="ml-2 text-sm">{documento.nome}.{documento.extensao} - {documento.caminho} </p>
             </li>
           ))}
         </ul>
       ) : (
-        <p>Nenhum documento encontrado.</p>
+        <strong><p>Nenhum documento encontrado.</p></strong>
       )}
     </div>
   );

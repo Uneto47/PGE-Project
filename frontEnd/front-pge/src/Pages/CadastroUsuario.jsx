@@ -43,7 +43,7 @@ function CadastroUsuario() {
   };
 
   return (
-    <div className="flex flex-col gap-5 bg-slate-200 min-h-screen intems-center justify-center">
+    <div className="flex flex-col gap-5 py-5 intems-center justify-center">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white p-4 rounded-lg shadow relative">
         <div className="text-center text-2xl font-bold leading-9 tracking-tight p-5 text-gray-900">
           <h2>

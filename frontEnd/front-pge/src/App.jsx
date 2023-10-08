@@ -1,6 +1,5 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { pages } from "./data/pages";
-import { lazy, Suspense, useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import Loading from "./components/Loading";
 import LoginUsuario from "./Pages/LoginUsuario";
 import PaginaInicialUsuario from "./Pages/PaginaInicialUsuario";
@@ -8,11 +7,8 @@ import CadastroUsuario from "./Pages/CadastroUsuario";
 import CadastrosProcessos from "./Pages/CadastrosProcessos";
 import PaginaUsuario from "./Pages/PaginaUsuario";
 import CadastroDocumentos from "./Pages/CadastroDocumentos";
+import Cabecalho from "./components/Cabecalho";
 
-const routes = pages.map(e => {
-  const Page = lazy(() => import(`./Pages/${e.filename}.jsx`));
-  return <Route key={e.name} path={e.route} element={<Page />} />;
-});
 
 function App() {
   const location = useLocation();
@@ -28,8 +24,8 @@ function App() {
   }, [location]);
 
   return (
-    <div>
-      <Suspense fallback={<Loading />}>
+    <div className="min-h-screen bg-slate-200">
+      <Cabecalho/>
         <Routes>
           <Route path="/" element={<PaginaInicialUsuario />}/>
           <Route path="/cadastro" element={<CadastroUsuario />}/>
@@ -39,7 +35,6 @@ function App() {
           <Route path="/login/:id" element={<PaginaUsuario />} />
           <Route path="/cadastro-documentos" element={<CadastroDocumentos />} />
         </Routes>
-      </Suspense>
     </div>
   )
 }
