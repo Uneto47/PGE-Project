@@ -37,7 +37,7 @@ Resolvendo o desafio por meio das tecnologias previamente escolhidas, incluindo 
 
 ### Exemplos basicos do Porjeto
 
-| Tela de Cadastro de Cliente (300px) | Tela de Login com Erro (300px) |
+| Tela de Cadastro de Cliente ) | Tela de Login com Erro (300px) |
 |-------------------------------------|-------------------------------|
 | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/bac3f9fd-a991-42e1-b3ae-96c33068814e" width="300"> | <img src="https://github.com/Uneto47/PGE-Project/assets/87950587/6e29c14e-bec3-4311-b4d4-3b7cb659a7bd" width="300"> |
 
