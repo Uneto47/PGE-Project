@@ -97,30 +97,28 @@ function PaginaUsuario() {
         </div>
       ) : (
         <div>
-          <div className="flex sm:flex-row justify-between items-center mb-5">
-            <div className="font-semibold bg-blue-800 text-white font-semibold p-4 rounded-lg mb-3 sm:mb-0">
-              <h1 className="text-2xl">Dados do {tipoRecebido}:</h1>
-              <p className="text-lg mt-1"> Nome: {usuarioData.nome} CPF: {usuarioData.cpf}
-              {tipoRecebido === "advogado" && ( <p className="text-lg">OAB: {usuarioData.oab}</p>
-              )}</p>
+          <div className="flex flex-col gap-2 items-center mb-5">
+            <div className="font-semibold bg-blue-800 text-white w-full max-w-xs font-semibold p-4 rounded-lg mb-3 sm:mb-0">
+              <h1 className="text-2xl text-center">Dados do {tipoRecebido}</h1>
+              <p className="text-lg mt-1"> Nome: {usuarioData.nome} </p>
+              <p className="text-lg mt-1"> CPF: {usuarioData.cpf} </p> 
+                {tipoRecebido === "advogado" && (<p className="text-lg">OAB: {usuarioData.oab}</p>)}
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-row gap-2">
               <Link to="/cadastro-processos">
-                <button className="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 mb-2 sm:mb-0">
-                  Cadastre um Novo Processo
+                <button className="rounded bg-blue-800 w-full max-w-sm px-6 pb-2 pt-2.5 text-xs font-medium uppercase text-white ">
+                  Novo Processo
                 </button>
               </Link>
               <Link to="/cadastro-documentos">
-                <button className="bg-blue-800 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
-                  Cadastre um Novo Documento
+                <button className="rounded bg-blue-800 w-full max-w-sm px-6 pb-2 pt-2.5 text-xs font-medium uppercase text-white">
+                  Novo Documento
                 </button>
               </Link>
             </div>
-
           </div>
-
           {processoData && processoData.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {processoData.map((processo, index) => (
                 <div key={index} className="bg-white p-4 rounded-lg shadow relative flex flex-col justify-between">
                   <div>
@@ -130,7 +128,7 @@ function PaginaUsuario() {
                     <p>
                       <strong> {tipoRecebido === "advogado" ? "Cliente" : "Advogado"}: </strong> {envolvido[index]}
                     </p>
-                    <div className="mt-4 overflow-y-auto max-h-32">
+                    <div className="overflow-y-auto max-h-32">
                       <Documentos processoData={processo} />
                     </div>
                     <p> <strong>Tema:</strong> {processo.tema} </p>
