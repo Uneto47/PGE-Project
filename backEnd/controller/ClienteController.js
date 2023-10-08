@@ -11,17 +11,6 @@ function encrypt(passowrd) {
 
 // Create
 const create = async (req, res) => {
-  const {nome, cpf, senha } = req.body
-  if(!nome){
-    return res.status(422).json({ msg: 'O nome é obrigatório!' })
-  }
-  if(!cpf){
-    return res.status(422).json({ msg: 'O cpf é obrigatório!' })
-  }
-  if(!senha){
-    return res.status(422).json({ msg: 'A senha é obrigatória!' })
-  }
-
   const user = await Clientes.findOne({cpf: cpf})
 
   if (user) {
@@ -36,7 +25,7 @@ const create = async (req, res) => {
   } catch (error) {
     const msg = error.message;
     console.error(msg);
-    res.status(500).json({ error: 'Erro ao criar cliente ou advogado' });
+    res.status(500).json({ error: 'Erro ao criar cliente' });
   }
 };
 

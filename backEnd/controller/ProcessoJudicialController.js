@@ -40,7 +40,7 @@ const getByNumero = async (req, res) => {
   } catch (error) {
     const msg = error.message;
     console.error(msg)
-    res.status(500).json({ error: 'Erro ao buscar processo judicial por número de processo' });
+    res.status(500).json({ error: 'Erro ao buscar processo judicial por cpf do cliente' });
   }
 };
 
@@ -58,7 +58,7 @@ const getByParte = async (req, res) => {
   } catch (error) {
     const msg = error.message;
     console.error(msg)
-    res.status(500).json({ error: 'Erro ao buscar processo judicial por número de processo' });
+    res.status(500).json({ error: 'Erro ao buscar processo judicial por cpf do advogado' });
   }
 };
 
@@ -102,9 +102,9 @@ const getByResponsavel = async (req, res) => {
 // Atualizar um processo judicial pelo número de processo
 const update = async (req, res) => {
   try {
-    const numeroProcesso = req.params.numero;
+    const valorCausa = req.params.valorcausa;
 
-    const processoJudicial = await ProcessoJudicial.findOneAndUpdate({ numeroprocesso: numeroProcesso }, req.body, { new: true }).populate({path: 'documentos', foreignField: 'nome'})
+    const processoJudicial = await ProcessoJudicial.findOneAndUpdate({ valorcausa: valorCausa }, req.body, { new: true }).populate({path: 'documentos', foreignField: 'nome'})
 
     if (!processoJudicial) {
       return res.status(404).json({ error: 'Processo judicial não encontrado' });
@@ -114,7 +114,7 @@ const update = async (req, res) => {
   } catch (error) {
     const msg = error.message;
     console.error(msg)
-    res.status(500).json({ error: 'Erro ao atualizar processo judicial por número de processo' });
+    res.status(500).json({ error: 'Erro ao atualizar valor do processo judicial' });
   }
 };
 
