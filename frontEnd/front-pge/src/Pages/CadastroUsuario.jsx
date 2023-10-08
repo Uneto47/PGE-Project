@@ -45,14 +45,15 @@ function CadastroUsuario() {
   return (
     <div className="flex flex-col gap-5 py-10 items-center justify-center">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white mt-2 p-4 rounded-lg shadow relative">
-          <h2 className='text-center text-xl font-bold leading-9 tracking-tight p-5 text-gray-900'>
-            Faça o Cadastro da sua conta
-          </h2>
+        <h2 className='text-center text-xl font-bold leading-9 tracking-tight p-5 text-gray-900'>
+          Faça o Cadastro da sua conta
+        </h2>
         <form className="space-y-6" onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="Nome" className="block text-sm font-medium leading-6 text-gray-900">Nome</label>
             <div className="mt-2">
               <input id="Nome"
+                placeholder='Digite seu nome'
                 name="Nome"
                 type="text"
                 value={nome}
@@ -68,6 +69,7 @@ function CadastroUsuario() {
             <label htmlFor="Cpf" className="block text-sm font-medium leading-6 text-gray-900">CPF</label>
             <div className="mt-2">
               <input id="cpf"
+                placeholder='Digite seu CPF'
                 name="cpf"
                 type="text"
                 value={cpf}
@@ -86,6 +88,7 @@ function CadastroUsuario() {
               </label>
               <div className="mt-2">
                 <input
+                  placeholder='Digite sua OAB'
                   id="oab"
                   name="oab"
                   type="text"
@@ -107,6 +110,7 @@ function CadastroUsuario() {
             </div>
             <div className="mt-2">
               <input id="password"
+                placeholder='Digite sua senha'
                 name="password"
                 type="password"
                 value={senha}
@@ -124,7 +128,7 @@ function CadastroUsuario() {
                 type="checkbox"
                 checked={isAdvogado}
                 onChange={() => setIsAdvogado(!isAdvogado)}
-                className="mr-2 mt-5"
+                className="mr-2"
               />
               Sou advogado
             </label>
