@@ -18,3 +18,8 @@ documentoSchema.pre('save', function (next) {
 const Documento = mongoose.model('Documento', documentoSchema);
 
 module.exports = Documento;
+
+// Exemplos de documentos que estão no banco:
+// ["nome":"Provas","caminho":"C:\\Users\\User\\Downloads\\provas.pdf","extensao":"PDF"},
+// {"nome":"Provas2","caminho":"C:\\Users\\User\\Downloads\\provas.docx","extensao":"Docx"},
+// "nome":"Detalhes5","caminho":"C:\\Users\\User\\Downloads\\detalhes5.pdf","extensao":"PDF"}]

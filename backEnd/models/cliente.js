@@ -18,3 +18,8 @@ clienteSchema.pre('save', function (next) {
 const Cliente = mongoose.model('Cliente', clienteSchema);
 
 module.exports = Cliente;
+
+//exemplos de clientes , senha de todos eles é 123: 
+// [{ "nome": "Neto", "cpf": "374" },
+// { "nome": "Oten", "cpf": "123" },
+// { "Victor", "cpf": "38965" }]
